@@ -26,7 +26,7 @@ function Registration() {
   return (
     <div className="register-container">
       <div className="register-card">
-        <h2>Register as Donor</h2>
+        <h2> Register </h2>
 
         <form onSubmit={handleSubmit}>
           <label>Full Name</label>
@@ -82,11 +82,12 @@ function Registration() {
               onChange={handleChange}
               required
             />
-            <span className="icon">📍</span>
+           
           </div>
 
           <button type="submit" className="submit-btn">
-            Register As Donor
+            
+            Register
           </button>
 
           <p className="login-text">

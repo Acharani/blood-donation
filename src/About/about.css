@@ -1,0 +1,26 @@
+.about-container {
+  width: 100%;
+  max-width: 1000px;     /* proper width */
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+/* Title */
+.about-container h1 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* Paragraph */
+.about-text {
+  width: 100%;
+  max-width: 800px;      /* 🔥 important */
+  margin: 0 auto;
+  font-size: 17px;
+  line-height: 1.8;
+  color: #555;
+  text-align: left;
+
+  word-break: normal;    /* 🔥 FIX */
+  white-space: normal;   /* 🔥 FIX */
+}

@@ -1,116 +1,115 @@
-import React from 'react'
-import { useState } from "react";
-
+import React, { useState } from "react";
+import "./Donate.css";
 
 function Donate() {
   const [formData, setFormData] = useState({
     name: "",
-    bloodType: "",
-    email: "",
+    bloodGroup: "",
     phone: "",
+    location: "",
+    willingToDonate: false,
+    potentialDonor: false
   });
 
   const handleChange = (e) => {
+    const { name, value, type ,checked }= e.target;
+
     setFormData({
       ...formData,
-      [e.target.name]: e.target.value,
+      [name]: type === "checkbox" ? checked : value
     });
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(formData); // check in console
-    alert("Donation Form Submitted!");
+    console.log(formData); // later connect backend
+    alert("Ready For Donation");
   };
 
   return (
-    <div className="top">
-      <div className="navbar">
-        <div className="one">
-          <div className="sub-nav">
-
-            <div className="logo">
-              <img src="" alt="" />
-              <h1>JOIN-HANDS</h1>
-            </div>
-
-            <div className="blood-data">
-              <div className="request">
-                <p>Request</p>
-                <h1>50</h1>
-              </div>
-              <div className="donor">
-                <p>Donor</p>
-                <h1>10</h1>
-              </div>
-            </div>
-
-            <div className="contact">
-              <a href="/contact">
-                <button>Contact Us</button>
-              </a>
-            </div>
-
-          </div>
-        </div>
-      </div>
-
-      {/* Donate Form */}
-      <div className="container">
-        <h2><u>Donate Blood</u></h2>
+    <div className="register-container">
+      <div className="register-card">
+        <h2> Donate to Save Life </h2>
 
         <form onSubmit={handleSubmit}>
-          
-          <label>Name:</label>
+          <label>Full Name</label>
           <input
             type="text"
             name="name"
+            placeholder="Enter your name"
             onChange={handleChange}
             required
           />
 
-          <label>Blood Type:</label>
+          <label>Blood Group</label>
           <select
-            name="bloodType"
+            name="bloodGroup"
             onChange={handleChange}
             required
           >
-            <option value="">Select</option>
-            <option value="A+">A+</option>
-            <option value="A-">A-</option>
-            <option value="B+">B+</option>
-            <option value="B-">B-</option>
-            <option value="AB+">AB+</option>
-            <option value="AB-">AB-</option>
-            <option value="O+">O+</option>
-            <option value="O-">O-</option>
+            <option value="">Select Blood Group</option>
+            <option>A+</option>
+            <option>A-</option>
+            <option>B+</option>
+            <option>B-</option>
+            <option>O+</option>
+            <option>O-</option>
+            <option>AB+</option>
+            <option>AB-</option>
           </select>
 
-          <label>Email:</label>
-          <input
-            type="email"
-            name="email"
-            onChange={handleChange}
-            required
-          />
-
-          <label>Phone:</label>
+          <label>Contact Number</label>
           <input
             type="tel"
             name="phone"
+            placeholder="Enter phone number"
             onChange={handleChange}
             required
           />
 
-          <button type="submit" style={{ backgroundColor: "red" }}>
-            Submit
+          <label>
+            <input
+             type="checkbox"
+             name="willingToDonate"
+             checked={formData.willingToDonate}
+             onChange={handleChange}
+             />
+             I am willing to be contacted for emergency blood requests.
+          </label>
+
+          <label>
+            <input
+            type="checkbox"
+            name="potentialDonor"
+            checked={formData.potentialDonor}
+            onChange={handleChange}
+            />
+
+            I constent to register as a potential blood donor.
+
+            </label>
+
+          
+
+          <label>Location</label>
+          <div className="location-box">
+            <input
+              type="text"
+              name="location"
+              placeholder="Enter location"
+              onChange={handleChange}
+              required
+            />
+           
+          </div>
+
+          <button type="submit" className="submit-btn">
+            
+            Donate to Save Life
           </button>
+
         </form>
       </div>
-
-      <center>
-        <a href="/registration">Before you register here</a>
-      </center>
     </div>
   );
 }

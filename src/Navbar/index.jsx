@@ -4,7 +4,7 @@ import { NavLink } from "react-router-dom";
 function Navbar() {
   return (
     <div className="navbar">
-      <h2 className="logo">JOIN-HANDS</h2>
+      <h2 className="logo">JOIN-HANDS </h2>
 
       <ul className="nav-links">
         <li>
@@ -14,7 +14,10 @@ function Navbar() {
           <NavLink to="/registration" className="nav-item">Registration</NavLink>
         </li>
         <li>
-          <NavLink to="/contact" className="nav-item">Contact</NavLink>
+          <NavLink to="/about" className="nav-item">About</NavLink>
+        </li>
+        <li>
+          <NavLink to="/bloodbank" className="nav-item"> Blood Bank</NavLink>
         </li>
         <li>
           <NavLink to="/donate" className="nav-item">Donate</NavLink>
@@ -22,6 +25,7 @@ function Navbar() {
         <li>
           <NavLink to="/login" className="nav-item">Login</NavLink>
         </li>
+
       </ul>
     </div>
   );

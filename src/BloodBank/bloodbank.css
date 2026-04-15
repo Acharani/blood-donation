@@ -1,0 +1,33 @@
+.bb-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 40px;
+  text-align: center;
+}
+
+.bb-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 30px;
+}
+
+.bb-card {
+  width: 260px;
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  text-align: left;
+  transition: 0.3s;
+}
+
+.bb-card:hover {
+  transform: translateY(-5px);
+}
+
+.bb-card h3 {
+  color: #c62828;
+  margin-bottom: 10px;
+}
