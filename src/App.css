@@ -130,4 +130,18 @@ h1,h2,h3 {
   font-weight: 600;
 }
 
+.nav-item {
+  color: black;
+}
+
+.nav-item:hover {
+  color: #c62828;
+}
+
+@media (max-width: 768px) {
+  .nav-item {
+    color: black !important;
+  }
+}
+
 
