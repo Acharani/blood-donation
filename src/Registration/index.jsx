@@ -1,102 +1,34 @@
-import React, { useState } from "react";
-import "./Registration.css";
+import axios from "axios";
+import { useState } from "react";
 
-function Registration() {
-  const [formData, setFormData] = useState({
+function Register() {
+  const [form, setForm] = useState({
     name: "",
     bloodGroup: "",
-    phone: "",
-    email: "",
-    location: ""
+    location: "",
+    phone: ""
   });
 
   const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    });
+    setForm({ ...form, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log(formData); // later connect backend
-    alert("Registered Successfully!");
+  const handleSubmit = async () => {
+    console.log("Button clicked");
+    const res = await axios.post("http://localhost:5000/donors", form);
+    alert(res.data);
   };
 
   return (
-    <div className="register-container">
-      <div className="register-card">
-        <h2> Register </h2>
+    <>
+      <input name="name" onChange={handleChange} placeholder="Name" />
+      <input name="bloodGroup" onChange={handleChange} placeholder="Blood Group" />
+      <input name="location" onChange={handleChange} placeholder="Location" />
+      <input name="phone" onChange={handleChange} placeholder="Phone" />
 
-        <form onSubmit={handleSubmit}>
-          <label>Full Name</label>
-          <input
-            type="text"
-            name="name"
-            placeholder="Enter your name"
-            onChange={handleChange}
-            required
-          />
-
-          <label>Blood Group</label>
-          <select
-            name="bloodGroup"
-            onChange={handleChange}
-            required
-          >
-            <option value="">Select Blood Group</option>
-            <option>A+</option>
-            <option>A-</option>
-            <option>B+</option>
-            <option>B-</option>
-            <option>O+</option>
-            <option>O-</option>
-            <option>AB+</option>
-            <option>AB-</option>
-          </select>
-
-          <label>Contact Number</label>
-          <input
-            type="tel"
-            name="phone"
-            placeholder="Enter phone number"
-            onChange={handleChange}
-            required
-          />
-
-          <label>Email Address</label>
-          <input
-            type="email"
-            name="email"
-            placeholder="Enter email"
-            onChange={handleChange}
-            required
-          />
-
-          <label>Location</label>
-          <div className="location-box">
-            <input
-              type="text"
-              name="location"
-              placeholder="Enter location"
-              onChange={handleChange}
-              required
-            />
-           
-          </div>
-
-          <button type="submit" className="submit-btn">
-            
-            Register
-          </button>
-
-          <p className="login-text">
-            Already Registered? <span>Login</span>
-          </p>
-        </form>
-      </div>
-    </div>
+      <button onClick={handleSubmit}>Submit</button>
+    </>
   );
 }
 
-export default Registration;
+export default Register;
